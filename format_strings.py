@@ -1,4 +1,4 @@
-USAGE = '\nUsage:\n\n./calc.py <coin> <amount_bought> <total_cost> \t[Inserts values into the portfolio]\n./calc.py -i <coin> \t\t\t\t[Inspects the info of a coin]\n./calc.py -c <coin> \t\t\t\t[Clears the coin from the portfolio]\n./calc.py -a \t\t\t\t\t[Checks the whole portfolio]\n'
+USAGE = '\nUsage:\n\n./cact.py <coin> <amount_bought> <total_cost> \t[Inserts values into the portfolio]\n./cact.py -i <coin> \t\t\t\t[Inspects the info of a coin]\n./cact.py -c <coin> \t\t\t\t[Clears the coin from the portfolio]\n./cact.py -a \t\t\t\t\t[Checks the whole portfolio]\n'
 COINS_OWNED = "You currently own %.2f %s"
 COINS_SUMMARY = "You currently own %.2f %s, which is worth $%.2f as of now"
 COINS_TOTAL_VALUE = "Your %s is currently worth $%.2f"
