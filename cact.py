@@ -14,6 +14,10 @@ def main(argv):
 		print USAGE
 		sys.exit(2)
 
+	if(len(args) == 2 or len(args) > 3):
+		print USAGE
+		sys.exit()
+
 	#parse through commandline args
 	for opt, arg in opts:
 		
@@ -67,8 +71,7 @@ def main(argv):
 			new_expenses = float(args[2])
 
 		#inaccurate num of args
-		elif not info or len(args) != 1:
-			print USAGE
+		elif not info:
 			sys.exit(2)
 
 	except:
@@ -144,6 +147,8 @@ def update_and_display_crypto(coin, bought=None, expenses=None, details=None):
 			data[coin]["amount_owned"] += amount_bought
 			data[coin]["total_paid"] += new_expenses
 
+		if amount_bought != 0 or new_expenses != 0:
+			print '\n', SUCCESSFUL_UPDATE % (amount_bought, coin, new_expenses)
 		#inspect the coin through coinmarketcap
 		if info:
 			coin_data = json.loads(coinmarketcap.ticker(coin))[0]
@@ -163,6 +168,7 @@ def update_and_display_crypto(coin, bought=None, expenses=None, details=None):
 
 			#print profit earnings
 			print '\n', COINS_SUMMARY % (data[coin]["amount_owned"], coin, total_value)
+			print COINS_SPENDING % (data[coin]["total_paid"], coin), '\n'
 			print COINS_PROFIT % (coin, profit), '\n'
 			
 		json_file.seek(0)
