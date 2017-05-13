@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import sys, json, getopt
+import sys, json, getopt, os.path
 from format_strings import *
 
 def main(argv):
@@ -31,6 +31,7 @@ def main(argv):
 			
 				if(delete_crypto(arg)):
 			
+					print "Coin successfully deleted from portfolio"
 					sys.exit()
 			
 				print "Coin not found in portfolio"
@@ -58,7 +59,7 @@ def main(argv):
 
 	try:
 
-		coin = args[0]
+		coin = args[0].lower()
 
 		#maxnum args
 		if len(args) == 3:
@@ -79,26 +80,21 @@ def main(argv):
 def read_cryptos():
 	""" Returns a list of all the coins in the json """
 
-	with open('CurrentExpenses', 'r+') as json_file:
-
-		try:
+	try:
+		with open(JSON_FILENAME, 'r+') as json_file:
 
 			data = json.load(json_file)
 
-		except:
-
-			return []
-
-		return [coin for coin in data.iterkeys()]
-
-	return []
+			return [coin for coin in data.iterkeys()]
+	except:
+		return []
 
 def delete_crypto(coin):
 	""" Deletes an entry off the json from the file """
 
-	with open('CurrentExpenses', 'r+') as json_file:
+	try:
 
-		try:
+		with open(JSON_FILENAME, 'r+') as json_file:
 
 			data = json.load(json_file)
 
@@ -110,11 +106,9 @@ def delete_crypto(coin):
 
 				return True
 
-		except:
+	except:
 
-			return False
-
-	return False
+		return False
 
 def update_and_display_crypto(coin, bought=None, expenses=None, details=None):
 
@@ -125,7 +119,11 @@ def update_and_display_crypto(coin, bought=None, expenses=None, details=None):
 
 	coinmarketcap = Market()
 
-	with open('CurrentExpenses', 'r+') as json_file:
+	if not os.path.isfile(JSON_FILENAME):
+		file = open(JSON_FILENAME, 'w')
+		file.close()
+
+	with open(JSON_FILENAME, 'r+') as json_file:
 
 		#attempt to read file data if any exists
 		try:
@@ -170,6 +168,9 @@ def update_and_display_crypto(coin, bought=None, expenses=None, details=None):
 		json_file.seek(0)
 		json.dump(data, json_file)
 		json_file.truncate()
+	
+	json_file.close()
+
 
 if __name__ == "__main__":
 
