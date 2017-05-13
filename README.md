@@ -12,7 +12,7 @@ Crypto Portfolio is a command-line tool built in python that enables easy record
 <br><br><br><br>
 
 <strong> Example run through of the crypto portfolio </strong>
-![alt text](https://github.com/jeff4elee/crypto_portfolio/blob/master/examples/ethereumdelete.PNG?raw=true)
-![alt text](https://github.com/jeff4elee/crypto_portfolio/blob/master/examples/allinfo.PNG?raw=true)
 ![alt text](https://github.com/jeff4elee/crypto_portfolio/blob/master/examples/neminsert.PNG?raw=true)
 ![alt text](https://github.com/jeff4elee/crypto_portfolio/blob/master/examples/ethereuminsert.PNG?raw=true)
+![alt text](https://github.com/jeff4elee/crypto_portfolio/blob/master/examples/allinfo.PNG?raw=true)
+![alt text](https://github.com/jeff4elee/crypto_portfolio/blob/master/examples/ethereumdelete.PNG?raw=true)
